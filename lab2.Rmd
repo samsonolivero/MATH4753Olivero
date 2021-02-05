@@ -82,11 +82,13 @@ Using Lattice Package construct colored dotplot
 #Red = Outlier; Blue= Possible Outlier
 mpgcol = 
   ifelse(
-  abs(z) > 3, "Red",
-  ifelse(abs(z) >= 2 & abs(z) <= 3, "Blue",
-    "Black"
-    )
-  )
+    abs(z) > 3, "Red",
+    ifelse(
+      abs(z) >= 2 & abs(z) <= 3, "Blue",
+        "Black"
+          )
+        )
+
 library(lattice)
 dotplot(mpg, col = mpgcol, main = "Dotplot of MPG Values")
 ```
@@ -96,11 +98,37 @@ dotplot(mpg, col = mpgcol, main = "Dotplot of MPG Values")
 
 Make a boxplot of mpg variables
 
+```{r}
+#Black Box, Notch for Median, Title, and Horizontal
+boxplot(mpg, notch = TRUE, horizontal = TRUE, col = "Black", xlab = "MPG", main = "Boxplot of MPG")
+```
+
+
 Use Chebyshev's theorem to predict the proportion of data within 2 standard deviations of the mean of mpg data
+
+>Chebyshevs Theorem:
+>
+>$1 - \frac{1}{k^2}$
+>
+>Therefore: with k = 2; $1 - \frac{1}{4} = \frac{3}{4}$
 
 Calculate Exact Proportion within 2 standard deviations of the mean
 
+```{r}
+k = 2
+cheb = 1 - (1/k^2)
+cheb
+```
+
+
+
 Does Chebyshev Agree with the data ?
+
+Actual Case:
+```{r}
+length(mpg[abs(z)<2]) / length(mpg)
+```
+
 
 Empirical Rule: what proportion of the data should be within 2 standard deviations of the mean
 
