@@ -275,8 +275,43 @@ div.tocify {
 <h1>Tasks</h1>
 <div id="task-1" class="section level2">
 <h2>Task 1</h2>
+<p>Get working directory</p>
 <pre class="r"><code>getwd()</code></pre>
 <pre><code>## [1] &quot;/Users/samsonolivero/Desktop/Stats/Labs/Lab2&quot;</code></pre>
+</div>
+<div id="task-2" class="section level2">
+<h2>Task 2</h2>
+<p>Read data into R</p>
+<pre class="r"><code>epagas = read.csv(&quot;EPAGAS.csv&quot;)</code></pre>
+<p>Get the first six lines of data</p>
+<pre class="r"><code>head(epagas)</code></pre>
+<pre><code>##    MPG
+## 1 36.3
+## 2 41.0
+## 3 36.9
+## 4 37.1
+## 5 44.9
+## 6 36.8</code></pre>
+</div>
+<div id="task-3" class="section level2">
+<h2>Task 3</h2>
+<p>Make the Object MPG</p>
+<p>Transform MPG to z and verify</p>
+<p>Finding possible MPG outliers using z</p>
+<p>Finding defined MPG outliers using z</p>
+<p>Using Lattice Package construct colored dotplot</p>
+<pre class="r"><code>library(lattice)
+#dotplot(mpg, col=mpgcol)</code></pre>
+</div>
+<div id="task-4" class="section level2">
+<h2>Task 4</h2>
+<p>Make a boxplot of mpg variables</p>
+<p>Use Chebyshev’s theorem to predict the proportion of data within 2 standard deviations of the mean of mpg data</p>
+<p>Calculate Exact Proportion within 2 standard deviations of the mean</p>
+<p>Does Chebyshev Agree with the data ?</p>
+<p>Empirical Rule: what proportion of the data should be within 2 standard deviations of the mean</p>
+<p>How well does it correspond ?</p>
+<p>Is the Empircal Rule Valid ? Why ?</p>
 </div>
 </div>
 

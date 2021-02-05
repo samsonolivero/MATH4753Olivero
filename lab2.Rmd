@@ -16,7 +16,59 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Task 1
 
+Get working directory
+
 ```{r}
 getwd()
 ```
+
+## Task 2
+
+Read data into R
+
+```{r}
+epagas = read.csv("EPAGAS.csv")
+```
+
+Get the first six lines of data
+
+```{r}
+head(epagas)
+```
+
+## Task 3
+
+Make the Object MPG
+
+Transform MPG to z and verify
+
+Finding possible MPG outliers using z
+
+Finding defined MPG outliers using z
+
+Using Lattice Package construct colored dotplot
+
+```{r}
+library(lattice)
+#dotplot(mpg, col=mpgcol)
+```
+
+
+## Task 4
+
+Make a boxplot of mpg variables
+
+Use Chebyshev's theorem to predict the proportion of data within 2 standard deviations of the mean of mpg data
+
+Calculate Exact Proportion within 2 standard deviations of the mean
+
+Does Chebyshev Agree with the data ?
+
+Empirical Rule: what proportion of the data should be within 2 standard deviations of the mean
+
+How well does it correspond ?
+
+Is the Empircal Rule Valid ? Why ?
+
+
 
