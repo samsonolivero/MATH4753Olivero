@@ -127,7 +127,7 @@ length(mpg[abs(z)<2]) / length(mpg)
 
 Does Chebyshev Agree with the data ?
 
->In this case Chebyshev does not agree with the data. The prediction for Chebyshev in the second standard deviation of the meme is 75%, however, 96% of the measurements lie within the range.
+>In this case Chebyshev does agree with the data. The prediction for Chebyshev in the second standard deviation of the mean is at least 75%. In reality, 96% of the data lies within the second standard deviation of the mean, therefore, meeting Chebyshev's criteria.
 
 
 Empirical Rule: what proportion of the data should be within 2 standard deviations of the mean
@@ -137,12 +137,12 @@ Empirical Rule: what proportion of the data should be within 2 standard deviatio
 
 How well does it correspond ?
 
->The correspondance between the actual case and the Empirical Rule proves to be pretty accurate.
+>The proportion of the actual case(96%) and the Empirical Rule(95%) are incredible similar. With the data having a 1% difference between the two.
 
 
 Is the Empirical Rule Valid ? Why ?
 
->In this case, the Empirical Rule is valid because the actual cases for the first, second, and third standard deviations are all fairly close, if not the same, to what the Empirical Rule predicts. Listed below are the actual cases versus the 68%, 95%, and ~100% the Empirical rule predicts. With the numbers respectively being so close together, it is safe to say the point is valid in this case. It is also important to note that the boxplot for the data falls under the criteria(i.e. "bell-shaped" and symmetrically distributed) for what an ideal situation would be to calculate the standard deviation of the mean.
+>In this case, the Empirical Rule is valid because the actual cases for the first, second, and third standard deviations are all fairly close, if not the same, to what the Empirical Rule predicts. Listed in the code below are the actual cases which are incredibly similar to the 68%, 95%, and ~100% the Empirical Rule predicts. With the numbers respectively being so close together, it is safe to say the point is valid. 
 
 ```{r}
 #First Standard Deviation
@@ -151,8 +151,13 @@ length(mpg[mean(mpg)-sd(mpg) < mpg & mpg < mean(mpg)+ sd(mpg) ])/length(mpg)
 length(mpg[mean(mpg)-2*sd(mpg) < mpg & mpg < mean(mpg)+ 2*sd(mpg) ])/length(mpg)
 #Third Standard Deviation
 length(mpg[abs(z)<3])/length(mpg)
+
+#Unimodel graph
+den = density(mpg)
+plot(den, main = "Distribution of MPG")
+abline(v = mean(mpg), col = "Red")
 ```
 
-
+>It is also important to note that the graph for the data follows the criteria in which data forms a "bell-shaped" curve and is symmetrically distributed. This creates a perfect instance of data to predict the standard deviation of the mean with the Empirical Rule method. 
 
 
