@@ -104,45 +104,58 @@ boxplot(mpg, notch = TRUE, horizontal = TRUE, col = "Black", xlab = "MPG", main 
 ```
 
 
-Use Chebyshev's theorem to predict the proportion of data within 2 standard deviations of the mean of mpg data
+>Use Chebyshev's theorem to predict the proportion of data within 2 standard deviations of the mean of mpg data
 
->Chebyshevs Theorem:
->
->$1 - \frac{1}{k^2}$
->
->Therefore: with k = 2; $1 - \frac{1}{4} = \frac{3}{4}$
+Chebyshevs Theorem:
+
+$1 - \frac{1}{k^2}$
+
+Therefore: with k = 2; $1 - \frac{1}{4} = \frac{3}{4}$
 
 ```{r}
+#Chebyshev's Prediction:
 k = 2
 cheb = 1 - (1/k^2)
-cheb
+print(paste0("Chebyshev's Prediction: ", cheb), quote = FALSE)
 ```
 
-Calculate Exact Proportion within 2 standard deviations of the mean
 
-Actual Case:
+>Calculate Exact Proportion within 2 standard deviations of the mean
+
 ```{r}
-length(mpg[abs(z)<2]) / length(mpg)
+#Actual Case:
+print(paste0("Actual: ", length(mpg[abs(z)<2]) / length(mpg)), quote = FALSE)
 ```
 
-Does Chebyshev Agree with the data ?
 
->In this case Chebyshev does agree with the data. The prediction for Chebyshev in the second standard deviation of the mean is at least 75%. In reality, 96% of the data lies within the second standard deviation of the mean, therefore, meeting Chebyshev's criteria.
+>Does Chebyshev Agree with the data ?
 
-
-Empirical Rule: what proportion of the data should be within 2 standard deviations of the mean
-
->95% of measurements of graphs that are in a bell-shaped curve and symmetric distribution should lie within 2 standard deviations of the mean
+Chebyshev does agree with the data. Although not exactly the number, the prediction for Chebyshev in the second standard deviation of the mean is of at least 75%. In reality, 96% of the data lies within the second standard deviation of the mean, meeting Chebyshev's criteria.
 
 
-How well does it correspond ?
+>Empirical Rule: what proportion of the data should be within 2 standard deviations of the mean ?
 
->The proportion of the actual case(96%) and the Empirical Rule(95%) are incredible similar. With the data having a 1% difference between the two.
+95% of measurements of graphs that are in a bell-shaped curve and symmetric distribution should lie within 2 standard deviations of the mean. Therefore, if the data is shaped as described, the proportion of data should be at least 95%.
 
 
-Is the Empirical Rule Valid ? Why ?
+>How well does it correspond ?
 
->In this case, the Empirical Rule is valid because the actual cases for the first, second, and third standard deviations are all fairly close, if not the same, to what the Empirical Rule predicts. Listed in the code below are the actual cases which are incredibly similar to the 68%, 95%, and ~100% the Empirical Rule predicts. With the numbers respectively being so close together, it is safe to say the point is valid. 
+The proportion of the actual case(96%) and the Empirical Rule(95%) are incredible similar. With the data having a 1% difference between the two.
+
+
+>Is the Empirical Rule Valid ? Why ?
+
+The Empirical Rule can be proven to be valid by proving that the data, when put into a graph, is roughly bell-shaped and symmetrically distributed. The graph below creates a perfect instance of data to predict the standard deviation of the mean with the Empirical Rule method because it displays that bell-shaped curve and that at least 95% of the data fell within the second deviation from the mean. 
+
+```{r}
+#Unimodal graph
+den = density(mpg)
+plot(den, main = "Distribution of MPG")
+abline(v = mean(mpg), col = "Red")
+```
+
+
+In this case, the Empirical Rule becomes valid for the actual numbers for the first, second, and third standard deviations. Listed in the code below are the actual cases which are incredibly similar to the 68%, 95%, and ~100% the Empirical Rule predicts. The graph provided above illustrates the criteria needed to apply the Empirical Rule, therefore the rule is valid, making the prediction valid.
 
 ```{r}
 #First Standard Deviation
@@ -151,13 +164,6 @@ length(mpg[mean(mpg)-sd(mpg) < mpg & mpg < mean(mpg)+ sd(mpg) ])/length(mpg)
 length(mpg[mean(mpg)-2*sd(mpg) < mpg & mpg < mean(mpg)+ 2*sd(mpg) ])/length(mpg)
 #Third Standard Deviation
 length(mpg[abs(z)<3])/length(mpg)
-
-#Unimodel graph
-den = density(mpg)
-plot(den, main = "Distribution of MPG")
-abline(v = mean(mpg), col = "Red")
 ```
-
->It is also important to note that the graph for the data follows the criteria in which data forms a "bell-shaped" curve and is symmetrically distributed. This creates a perfect instance of data to predict the standard deviation of the mean with the Empirical Rule method. 
 
 
