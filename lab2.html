@@ -347,15 +347,39 @@ boxplot(mpg, notch = TRUE, horizontal = TRUE, col = &quot;Black&quot;, xlab = &q
 <p><span class="math inline">\(1 - \frac{1}{k^2}\)</span></p>
 <p>Therefore: with k = 2; <span class="math inline">\(1 - \frac{1}{4} = \frac{3}{4}\)</span></p>
 </blockquote>
-<p>Calculate Exact Proportion within 2 standard deviations of the mean</p>
 <pre class="r"><code>k = 2
 cheb = 1 - (1/k^2)
 cheb</code></pre>
 <pre><code>## [1] 0.75</code></pre>
+<p>Calculate Exact Proportion within 2 standard deviations of the mean</p>
+<p>Actual Case:</p>
+<pre class="r"><code>length(mpg[abs(z)&lt;2]) / length(mpg)</code></pre>
+<pre><code>## [1] 0.96</code></pre>
 <p>Does Chebyshev Agree with the data ?</p>
+<blockquote>
+<p>In this case Chebyshev does not agree with the data. The prediction for Chebyshev in the second standard deviation of the meme is 75%, however, 96% of the measurements lie within the range.</p>
+</blockquote>
 <p>Empirical Rule: what proportion of the data should be within 2 standard deviations of the mean</p>
+<blockquote>
+<p>95% of measurements of graphs that are in a bell-shaped curve and symmetric distribution should lie within 2 standard deviations of the mean</p>
+</blockquote>
 <p>How well does it correspond ?</p>
-<p>Is the Empircal Rule Valid ? Why ?</p>
+<blockquote>
+<p>The correspondance between the actual case and the Empirical Rule proves to be pretty accurate.</p>
+</blockquote>
+<p>Is the Empirical Rule Valid ? Why ?</p>
+<blockquote>
+<p>In this case, the Empirical Rule is valid because the actual cases for the first, second, and third standard deviations are all fairly close, if not the same, to what the Empirical Rule predicts. Listed below are the actual cases versus the 68%, 95%, and ~100% the Empirical rule predicts. With the numbers respectively being so close together, it is safe to say the point is valid in this case. It is also important to note that the boxplot for the data falls under the criteria(i.e. “bell-shaped” and symmetrically distributed) for what an ideal situation would be to calculate the standard deviation of the mean.</p>
+</blockquote>
+<pre class="r"><code>#First Standard Deviation
+length(mpg[mean(mpg)-sd(mpg) &lt; mpg &amp; mpg &lt; mean(mpg)+ sd(mpg) ])/length(mpg)</code></pre>
+<pre><code>## [1] 0.68</code></pre>
+<pre class="r"><code>#Second Standard Deviation
+length(mpg[mean(mpg)-2*sd(mpg) &lt; mpg &amp; mpg &lt; mean(mpg)+ 2*sd(mpg) ])/length(mpg)</code></pre>
+<pre><code>## [1] 0.96</code></pre>
+<pre class="r"><code>#Third Standard Deviation
+length(mpg[abs(z)&lt;3])/length(mpg)</code></pre>
+<pre><code>## [1] 0.99</code></pre>
 </div>
 </div>
 

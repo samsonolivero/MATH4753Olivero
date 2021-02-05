@@ -112,29 +112,44 @@ Use Chebyshev's theorem to predict the proportion of data within 2 standard devi
 >
 >Therefore: with k = 2; $1 - \frac{1}{4} = \frac{3}{4}$
 
-Calculate Exact Proportion within 2 standard deviations of the mean
-
 ```{r}
 k = 2
 cheb = 1 - (1/k^2)
 cheb
 ```
 
-
-
-Does Chebyshev Agree with the data ?
+Calculate Exact Proportion within 2 standard deviations of the mean
 
 Actual Case:
 ```{r}
 length(mpg[abs(z)<2]) / length(mpg)
 ```
 
+Does Chebyshev Agree with the data ?
+
+>In this case Chebyshev does not agree with the data. The prediction for Chebyshev in the second standard deviation of the meme is 75%, however, 96% of the measurements lie within the range.
 
 Empirical Rule: what proportion of the data should be within 2 standard deviations of the mean
 
+>95% of measurements of graphs that are in a bell-shaped curve and symmetric distribution should lie within 2 standard deviations of the mean
+
 How well does it correspond ?
 
-Is the Empircal Rule Valid ? Why ?
+>The correspondance between the actual case and the Empirical Rule proves to be pretty accurate.
+
+Is the Empirical Rule Valid ? Why ?
+
+>In this case, the Empirical Rule is valid because the actual cases for the first, second, and third standard deviations are all fairly close, if not the same, to what the Empirical Rule predicts. Listed below are the actual cases versus the 68%, 95%, and ~100% the Empirical rule predicts. With the numbers respectively being so close together, it is safe to say the point is valid in this case. It is also important to note that the boxplot for the data falls under the criteria(i.e. "bell-shaped" and symmetrically distributed) for what an ideal situation would be to calculate the standard deviation of the mean.
+
+```{r}
+#First Standard Deviation
+length(mpg[mean(mpg)-sd(mpg) < mpg & mpg < mean(mpg)+ sd(mpg) ])/length(mpg)
+#Second Standard Deviation
+length(mpg[mean(mpg)-2*sd(mpg) < mpg & mpg < mean(mpg)+ 2*sd(mpg) ])/length(mpg)
+#Third Standard Deviation
+length(mpg[abs(z)<3])/length(mpg)
+```
+
 
 
 
