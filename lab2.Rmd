@@ -129,13 +129,16 @@ Does Chebyshev Agree with the data ?
 
 >In this case Chebyshev does not agree with the data. The prediction for Chebyshev in the second standard deviation of the meme is 75%, however, 96% of the measurements lie within the range.
 
+
 Empirical Rule: what proportion of the data should be within 2 standard deviations of the mean
 
 >95% of measurements of graphs that are in a bell-shaped curve and symmetric distribution should lie within 2 standard deviations of the mean
 
+
 How well does it correspond ?
 
 >The correspondance between the actual case and the Empirical Rule proves to be pretty accurate.
+
 
 Is the Empirical Rule Valid ? Why ?
 
