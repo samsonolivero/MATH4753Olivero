@@ -38,19 +38,57 @@ head(epagas)
 
 ## Task 3
 
-Make the Object MPG
+Make the Object MPG vector 
+
+```{r}
+mpg = epagas$MPG #Creates a vector of the object MPG in epagas file
+```
 
 Transform MPG to z and verify
 
+```{r}
+z = (mpg - mean(mpg)) / sd(mpg) #formula found in word file 
+head(z)
+#paste0() function in R Language is used to concatenate all elements without separator.
+#round answer to the 4th decimal point
+#Get rid of quotation marks
+print(paste0("Mean = ", round(mean(z), digits = 4)), quote = FALSE)
+#variance is a measure of how spread out a data set is. It is calculated as the average squared deviation of each number from the mean of a data set
+print(paste0("Variance = ", var(z)), quote = FALSE)
+#Standard deviation is the measure of dispersion of a set of data from its mean. It measures the    absolute variability of a distribution
+print(paste0("Standard Deviation = ", sd(z)), quote = FALSE)
+```
+
+
 Finding possible MPG outliers using z
 
+```{r}
+outliers = mpg[abs(z) >= 2 & abs(z) <= 3]
+outliers
+```
+
+
 Finding defined MPG outliers using z
+
+```{r}
+defOutliers = mpg[abs(z) > 3]
+defOutliers
+```
+
 
 Using Lattice Package construct colored dotplot
 
 ```{r}
+#Red = Outlier; Blue= Possible Outlier
+mpgcol = 
+  ifelse(
+  abs(z) > 3, "Red",
+  ifelse(abs(z) >= 2 & abs(z) <= 3, "Blue",
+    "Black"
+    )
+  )
 library(lattice)
-#dotplot(mpg, col=mpgcol)
+dotplot(mpg, col = mpgcol, main = "Dotplot of MPG Values")
 ```
 
 
